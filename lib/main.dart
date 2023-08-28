@@ -1,9 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_app_obrigations/api/firebase_api.dart';
+import "package:firebase_core/firebase_core.dart";
 import 'screens/qr_code_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await FirebaseApi().initNotifications();
   runApp(MyApp());
 }
 
