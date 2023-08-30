@@ -1,5 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import "package:firebase_messaging/firebase_messaging.dart";
+import 'package:flutter_app_obrigations/core/config.dart';
 import 'package:flutter_app_obrigations/core/http_client.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -25,7 +26,8 @@ class _QRCodeScannerPageState extends State<QRCodeScannerPage> {
       scanData,
     ) async {
       try {
-        final sucesss = await HttpClient.makeApiCall(scanData.code!);
+        final sucesss = await HttpClient.makeApiCall(
+            data: scanData.code!, firebaseToken: Config.firebaseToken, apiKey: Config.apiKey);
         if (sucesss) {
           // ignore: use_build_context_synchronously
           Navigator.of(context).pushReplacement(
@@ -49,7 +51,6 @@ class _QRCodeScannerPageState extends State<QRCodeScannerPage> {
                     ),
                   ],
                 ));
-              
       }
     });
   }
