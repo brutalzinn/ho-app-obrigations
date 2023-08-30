@@ -1,14 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_obrigations/api/firebase_api.dart';
+import 'package:flutter_app_obrigations/providers/firebase_provider.dart';
 import "package:firebase_core/firebase_core.dart";
+import 'package:flutter_app_obrigations/screens/home.dart';
 import 'screens/qr_code_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await FirebaseApi().initNotifications();
-  runApp(MyApp());
+  await FirebaseProvider().initNotifications();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -34,11 +35,10 @@ class MyApp extends StatelessWidget {
       );
     };
     return MaterialApp(
-      title: 'QR Code Scanner App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const QRCodeScannerPage(),
-    );
+        title: 'QR Code Scanner App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Home());
   }
 }

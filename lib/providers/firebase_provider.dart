@@ -3,10 +3,8 @@ import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter_app_obrigations/core/config.dart";
 
-class FirebaseApi {
+class FirebaseProvider {
   final _firebaseMessaging = FirebaseMessaging.instance;
-
-  Future<void> handleBackgroundMessage(RemoteMessage message) async {}
 
   Future<void> initNotifications() async {
     await _firebaseMessaging.requestPermission();
@@ -15,6 +13,5 @@ class FirebaseApi {
     if (kDebugMode) {
       print("token: $fCMToken");
     }
-    // FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
   }
 }

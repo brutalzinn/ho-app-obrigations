@@ -26,7 +26,7 @@ class _QRCodeScannerPageState extends State<QRCodeScannerPage> {
       scanData,
     ) async {
       try {
-        final sucesss = await HttpClient.makeApiCall(
+        final sucesss = await HttpClient.makeConfirmCall(
             data: scanData.code!, firebaseToken: Config.firebaseToken, apiKey: Config.apiKey);
         if (sucesss) {
           // ignore: use_build_context_synchronously
@@ -41,7 +41,7 @@ class _QRCodeScannerPageState extends State<QRCodeScannerPage> {
             context: context,
             builder: (context) => AlertDialog(
                   title: const Text("Error"),
-                  content: const Text("Faild to connect with obrigation API."),
+                  content: const Text("Cant confirm this obrigation at this moment."),
                   actions: [
                     TextButton(
                       child: const Text('OK'),

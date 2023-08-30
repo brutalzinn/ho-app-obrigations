@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ResultPage extends StatelessWidget {
   final String scannedData;
 
-  ResultPage(this.scannedData, {super.key});
+  const ResultPage(this.scannedData, {super.key});
 
   @override
   Widget build(BuildContext context) {
